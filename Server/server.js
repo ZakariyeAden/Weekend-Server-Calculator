@@ -16,9 +16,9 @@ app.use(express.static("Server/public"));
 const mathOperations = require('./Public/Modules/index')
 
 // MAKE A PLAN:
-// Work on GET, getting the inputs submitted and display
+//✅Work on GET, getting the inputs submitted and display
 // Make the Equal button the event listener
-// Make an Object in module that get the math operations, total, and two numbers. Bundle them up
+//✅Make an Object in module that get the math operations, total, and two numbers. Bundle them up
 // Work on POST, Posting the two numbers, total, and displaying the operations
 // Gonna need functions that does the math operations in Server
 // Might need use event multiple listeners and functions for multiplication
@@ -35,12 +35,21 @@ const mathOperations = require('./Public/Modules/index')
 // Use the functions Math operations in Server
 
 
-// Send the Operations
+// Send the response
 app.get('/calculator', (req,res) => {
   res.send(mathOperations)
 })
 
+// POST the response
+app.post('/calculator', (req, res) => {
+  // Console Log the req.body 
+  console.log('IN POST, this is the response retrived', req.body);
+  // Want update and push into the object when we recieve new data
+  mathOperations.push(req.body.postTheCalculations)
 
+  // Always send 201
+  res.sendStatus(201);
+})
 
 // Listen is app
 app.listen(PORT, () => {

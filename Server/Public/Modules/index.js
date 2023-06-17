@@ -1,10 +1,11 @@
-const operations = [
+let operations = [
   {
-    num1Value:0,
-    num2Value:0,
-    total:0,
-    operations: []
+    numberOne:0,
+    numberTwo:0,
+    // mathOperations: ['+', '-', '*', '/'],
+    // total: 0
   }
 ]
 
 module.exports = operations;
+
