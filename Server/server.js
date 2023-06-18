@@ -53,9 +53,9 @@ app.get('/calculator', (req,res) => {
 // POST the response
 app.post('/calculate', (req, res) => {
   // Params 
-  let numberOne = req.body.numberOne;
-  let numberTwo = req.body.numberTwo;
-  let operator = req.body.operator;
+  let numberOne = Number(req.body.numberOne);
+  let numberTwo = Number(req.body.numberTwo);
+  let operator = Number(req.body.operator);
   let result = 0;
  let calculation = {
   NumberOne: numberOne,
@@ -66,13 +66,13 @@ app.post('/calculate', (req, res) => {
 
   // Operator 
   if(calculation.Operator === '+'){
-    calculation.result = Number(calculation.NumberOne) + Number(calculation.NumberTwo);
+    calculation.result = calculation.NumberOne + calculation.NumberTwo;
   } else if(calculation.Operator === '-'){
-    calculation.result = Number(calculation.NumberOne) - Number(calculation.NumberTwo);
+    calculation.result = calculation.NumberOne - calculation.NumberTwo;
   }else if(calculation.Operator === '/'){
-    calculation.result = Number(calculation.NumberOne) / Number(calculation.NumberTwo);
+    calculation.result = calculation.NumberOne / calculation.NumberTwo;
   }else if(calculation.Operator === '*'){
-    calculation.result = Number(calculation.NumberOne) * Number(calculation.NumberTwo);
+    calculation.result = calculation.NumberOne * calculation.NumberTwo;
   }
   // Console Log the req.body 
   console.log('IN POST, this is the response retrived', req.body);

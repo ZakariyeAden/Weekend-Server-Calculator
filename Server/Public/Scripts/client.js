@@ -7,16 +7,16 @@ function getStarted() {
     operator = $(this).html();
   })
   console.log("TEST");
-  getHandler();
   $("#submit-btn").on("click", postHandler);
+  getHandler();
 }
 
 function postHandler(e) {
   // Prevent Default. Show in the Console
   e.preventDefault();
   // Get the values
-  let num1Value = $("#NumberOne").val();
-  let num2Value = $("#NumberTwo").val();
+  let num1Value = Number($("#NumberOne").val());
+  let num2Value = Number($("#NumberTwo").val());
   let calculation = {
     NumberOne: num1Value,
     NumberTwo: num2Value,
@@ -34,6 +34,7 @@ function postHandler(e) {
       let result = response.result;
 
       $('#total').html(`<h3>${result}</h3>`)
+      getHandler();
     }) // Then Catch any errors!
     .catch(function (error) {
       console.log("Request failed in POST postHandler", error);
