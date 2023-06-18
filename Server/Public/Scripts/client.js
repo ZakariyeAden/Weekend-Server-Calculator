@@ -25,7 +25,7 @@ function postHandler(e) {
   // POST METHOD and Route
   $.ajax({
     method: "POST",
-    url: "/calculation",
+    url: "/calculate",
     // Getting the data and using the parameter
     data: calculation
   }) // Then send the response recieved and Console Log

@@ -51,7 +51,7 @@ app.get('/calculator', (req,res) => {
  // Object to get the req.body
 
 // POST the response
-app.post('/calculation', (req, res) => {
+app.post('/calculate', (req, res) => {
   // Params 
   let numberOne = req.body.numberOne;
   let numberTwo = req.body.numberTwo;
@@ -63,6 +63,7 @@ app.post('/calculation', (req, res) => {
   Operator: operator,
   result: result
 }
+
   // Operator 
   if(calculation.Operator === '+'){
     calculation.result = Number(calculation.NumberOne) + Number(calculation.NumberTwo);
