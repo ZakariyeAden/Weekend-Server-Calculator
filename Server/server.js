@@ -11,8 +11,7 @@ let total = 0;
 // Find static index.html
 app.use(express.static("Server/public"));
 
-// Modules
-const Operation = require('./Public/Modules/index');
+
 
 
 // MAKE A PLAN:
@@ -49,30 +48,30 @@ app.get('/calculator', (req,res) => {
 // app.get('/total', (req,res) => {
 //   res.send(Total)
 // })
+ // Object to get the req.body
 
 // POST the response
-app.post('/calculator', (req, res) => {
+app.post('/calculation', (req, res) => {
   // Params 
   let numberOne = req.body.numberOne;
   let numberTwo = req.body.numberTwo;
   let operator = req.body.operator;
   let result = 0;
-  // Object to get the req.body
-  let calculation = {
-    NumberOne: numberOne,
-    NumberTwo: numberTwo,
-    Operator: operator,
-    result: result
-  }
+ let calculation = {
+  NumberOne: numberOne,
+  NumberTwo: numberTwo,
+  Operator: operator,
+  result: result
+}
   // Operator 
-  if(operator === '+'){
-    result = Number(numberOne) + Number(numberTwo);
-  } else if(operator === '-'){
-    result = Number(numberOne) - Number(numberTwo);
-  }else if(operator === '/'){
-    result = Number(numberOne) / Number(numberTwo);
-  }else if(operator === '*'){
-    result = Number(numberOne) * Number(numberTwo);
+  if(calculation.Operator === '+'){
+    calculation.result = Number(calculation.NumberOne) + Number(calculation.NumberTwo);
+  } else if(calculation.Operator === '-'){
+    calculation.result = Number(calculation.NumberOne) - Number(calculation.NumberTwo);
+  }else if(calculation.Operator === '/'){
+    calculation.result = Number(calculation.NumberOne) / Number(calculation.NumberTwo);
+  }else if(calculation.Operator === '*'){
+    calculation.result = Number(calculation.NumberOne) * Number(calculation.NumberTwo);
   }
   // Console Log the req.body 
   console.log('IN POST, this is the response retrived', req.body);
