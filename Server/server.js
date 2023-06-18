@@ -24,6 +24,10 @@ const Operation = require('./Public/Modules/index');
 // Work on POST, Posting the two numbers, total, and displaying the operations
 // Also need to figure out to clear or delete 
 
+// Need to select total separately 
+// Need operations in server and params
+// Use if else if statements and equations
+// Use Event listeners and functions in client js
 
 
 
@@ -36,19 +40,10 @@ const Operation = require('./Public/Modules/index');
 
 // Use the functions Math operations in Server
 
-
-// if($('#plus')){
-//   Operation.total = Operation.numberOne + Operation.numberTwo;
-//   Operation.push(Operation.total);
-//   console.log(Operation.total);
-//   return `${Operation.numberOne} ${Operation.mathOperations[0]} ${Operation.numberTwo}`
-// }
-
+// Store
+let getCalculation = [];
 // Send the response
 app.get('/calculator', (req,res) => {
- 
-  // Operation.total = Operation.numberOne - Operation.numberTwo;
-  // console.log('Total test',Operation.total);
   res.send(Operation)
 })
 // app.get('/total', (req,res) => {
@@ -57,20 +52,39 @@ app.get('/calculator', (req,res) => {
 
 // POST the response
 app.post('/calculator', (req, res) => {
-  
+  // Params 
+  let numberOne = req.body.numberOne;
+  let numberTwo = req.body.numberTwo;
+  let operator = req.body.operator;
+  let result = 0;
+  // Object to get the req.body
+  let calculation = {
+    NumberOne: numberOne,
+    NumberTwo: numberTwo,
+    Operator: operator,
+    result: result
+  }
+  // Operator 
+  if(operator === '+'){
+    result = Number(numberOne) + Number(numberTwo);
+  } else if(operator === '-'){
+    result = Number(numberOne) - Number(numberTwo);
+  }else if(operator === '/'){
+    result = Number(numberOne) / Number(numberTwo);
+  }else if(operator === '*'){
+    result = Number(numberOne) * Number(numberTwo);
+  }
   // Console Log the req.body 
   console.log('IN POST, this is the response retrived', req.body);
-  
-  console.log('Operations',Operation);
-  // Number(Operation.total) = Number(Operation.numberOne) - Number(Operation.numberTwo);
-  // console.log('Total test',Number(Operation.total));
-  
-  // Want update and push into the object when we recieve new data
-  Operation.push(req.body.postTheCalculations);
+  // Push the data
+  getCalculation.push(calculation);
+  // Send it
+  res.send(calculation);
   // Always send 201
   res.sendStatus(201);
 })
 
+  
 // Listen is app
 app.listen(PORT, () => {
   console.log("listening on port", PORT);
