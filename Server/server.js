@@ -27,7 +27,7 @@ const Operation = require('./Public/Modules/index');
 // Need to select total separately 
 // Need operations in server and params
 // Use if else if statements and equations
-// Use Event listeners and functions in client js
+// Use Event listeners and functions in client js. Or Could .html in Jquery
 
 
 
@@ -44,7 +44,7 @@ const Operation = require('./Public/Modules/index');
 let getCalculation = [];
 // Send the response
 app.get('/calculator', (req,res) => {
-  res.send(Operation)
+  res.send(getCalculation)
 })
 // app.get('/total', (req,res) => {
 //   res.send(Total)
