@@ -5,26 +5,26 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/Server/Style/style.css">
-  </link>
-  <script src="/Server/Vendors/jquery.js"></script>
-  <script src="/Server/Scripts/client.js"></script>
+  <link rel="stylesheet" href="./Style/style.css"></link>
+  <script src="./Vendors/jquery.js"></script>
+  <script src="./Scripts/client.js"></script>
   <title>Weekend Calculator</title>
 </head>
 
 <body>
   <section>
     <form>
-      <input type="number" placeholder="" id="Num1" />
-      <button id="plus">+</button>
-      <button id="subtraction">-</button>
-      <button id="multiplication">*</button>
-      <button id="division">/</button>
-      <input type="number" placeholder="" id="Num2" />
-      <button id="submit-btn">=</button>
-      <button id="clear">c</button>
+      <input type="number" placeholder="Number 1" id="NumberOne" />
+      <button id="plus" type="button" class="operator">+</button>
+      <button id="subtraction" type="button" class="operator">-</button>
+      <button id="multiplication" type="button" class="operator">*</button>
+      <button id="division" type="button" class="operator">/</button>
+      <input type="number" placeholder="Number 2" id="NumberTwo" />
+      <button id="submit-btn" type="submit">=</button>
+      <button id="clear" type="button">c</button>
     </form>
   </section>
+  <h3 id="total"></h3>
   <ul id="content">
 
   </ul>
