@@ -8,7 +8,6 @@ function getStarted() {
   })
   console.log("TEST");
   $("#submit-btn").on("click", postHandler);
-  getHandler();
 }
 
 function postHandler(e) {
@@ -51,9 +50,7 @@ function getHandler() {
       console.log("Response in GET getHandler", response);
       console.log(typeof response.numberOne);
       // Append the operations
-      $('#content').append(`
-        <li>${response.NumberOne} ${response.Operator} ${response.NumberTwo} = ${response.result}</li>
-      `)
+      render(response);
       // Then getting any Errors
     })
     .catch(function (error) {
@@ -61,6 +58,16 @@ function getHandler() {
     });
 }
 
-
+function render(response){
+  console.log("Response in GET getHandler", response);
+  console.log(typeof response.numberOne);
+  $('#content').empty();
+  // Append the operations
+  for(let i = 0; i < response.length; i++){
+    $('#content').append(`
+      <li>${response[i].NumberOne} ${response[i].Operator} ${response[i].NumberTwo} = ${response[i].result}</li>
+    `)
+  }
+}
 
 
