@@ -8,6 +8,7 @@ function getStarted() {
   })
   console.log("TEST");
   $("#submit-btn").on("click", postHandler);
+  $("#clear").on("click", deleteHandler);
 }
 
 function postHandler(e) {
@@ -44,28 +45,44 @@ function getHandler() {
   $.ajax({
     method: "GET",
     url: "/calculator",
-    // Then getting the response
   })
+  // Then getting the response
     .then(function (response) {
       console.log("Response in GET getHandler", response);
       console.log(typeof response.numberOne);
       // Append the operations
       render(response);
-      // Then getting any Errors
     })
+    // Then getting any Errors
     .catch(function (error) {
       console.log("Request failed in Submit", error);
     });
 }
 
+function deleteHandler() {
+  $('#content').empty('');
+  $('#total').empty('');
+  // $.ajax({
+  //   method: "DELETE",
+  //   url: "/calculator",
+  // })
+  // // Then getting the response
+  //   .then(function (response) {
+  //     console.log("Response in DELETE getHandler", response);
+  //   })
+  //   .catch(function (error) {
+  //     console.log("Request failed in Submit", error);
+  //   });
+}
+
 function render(response){
   console.log("Response in GET getHandler", response);
   console.log(typeof response.numberOne);
-  $('#content').empty();
+  $('#content').empty('');
   // Append the operations
   for(let i = 0; i < response.length; i++){
     $('#content').append(`
-      <li>${response[i].NumberOne} ${response[i].Operator} ${response[i].NumberTwo} = ${response[i].result}</li>
+      <li class="calculation">${response[i].NumberOne} ${response[i].Operator} ${response[i].NumberTwo} = ${response[i].result}</li>
     `)
   }
 }

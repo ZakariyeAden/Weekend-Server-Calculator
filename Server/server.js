@@ -71,7 +71,9 @@ app.post("/calculate", (req, res) => {
   // Send the calculation
   res.send(calculation);
 });
-
+// app.delete('/calculate', (req,res) => {
+//   res.sendStatus(200);
+// })
 // Listen is app
 app.listen(PORT, () => {
   console.log("listening on port", PORT);
